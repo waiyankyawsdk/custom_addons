@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="estate_property_type_view_form" model="ir.ui.view">
+            <field name="name">estate.property.type.form</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <form string="House in Brussels">
+                    <sheet>
+                        <group colspan="2">
+                            <group>
+                                <field name="property_id"/>
+                                <field name="date_availability"/>
+                            </group>
+                            <group>
+                                <field name="expected_price"/>
+                                <field name="selling_price"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Other Info">
+                            <group>
+                                <field name = "seller" />
+                                <field name = "buyer" />
+                            </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="estate_property_type_action" model="ir.actions.act_window">
+            <field name="name">Property Types</field>
+            <field name="res_model">estate.property.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
