@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>  
+        <!-- Tree View -->
         <record id="view_hospital_patient_tree" model="ir.ui.view">
             <field name="name">hospital.patient.tree</field>
             <field name="model">hospital.patient</field>
@@ -12,7 +13,7 @@
             </tree>
             </field>
         </record>
-
+        <!-- Form View -->
         <record id="view_hospital_patient_form" model="ir.ui.view">
             <field name="name">hospital.patient.form</field>
             <field name="model">hospital.patient</field>
@@ -33,20 +34,30 @@
             </form>
             </field>
         </record>
-
+        <!-- Search -->
         <record id="view_hospital_patient_search" model="ir.ui.view">
             <field name="name">hospital.patient.search</field>
             <field name="model">hospital.patient</field>
             <field name="arch" type="xml">
+                <!-- Hospital Patient Search with Name and Ref -->
                 <search>
-                    <field name="name" string="Patient Name" filter_domain="['|', ('name','ilike',self), ('ref','ilike',self)]"/>
+                    <field name="name" string="Patient Name" filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]" />
                     <field name="age" />
                     <field name="ref" />
                     <field name="gender" />
+                    <!-- Search Filter with Gender = male,female , age<= 5 -->
+                    <filter name="filter_male" string="Male" domain="[('gender', '=', 'male')]" />
+                    <filter name="filter_female" string="Female" domain="[('gender', '=', 'female')]" />
+                    <separator />
+                    <filter name="filter_kids" string="Kids" domain="[('age', '&lt;=', 5)]" />
+                    <!-- Group by Gender -->
+                    <group expand="1" string="Group By">
+                        <filter string="Gender" name='group_by_gender' context="{'group_by':'gender'}"/>
+                    </group>
                 </search>
             </field>
         </record>
-         
+        <!-- Action -->
         <record id="action_hospital_patient" model="ir.actions.act_window">
             <field name="name">Patients</field>
             <field name="type">ir.actions.act_window</field>
@@ -59,10 +70,10 @@
                 </p>
             </field>
         </record>
-
-         <menuitem id="menu_patient"
-            name="Patient"
-            action="action_hospital_patient"
-            parent="menu_patient_master"
-            sequence="0"/>
+        <!-- Menu -->
+        <menuitem id="menu_patient"
+        name="Patient"
+        action="action_hospital_patient"
+        parent="menu_patient_master"
+        sequence="0"/>
 </odoo>
