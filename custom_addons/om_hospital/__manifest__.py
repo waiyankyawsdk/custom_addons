@@ -10,7 +10,9 @@
     'description': """Hospital Management System""",
     'author': "Wai Yan Kyaw",
     'sequence': -100,
-    'depends': [],
+    'depends': [
+        'mail'
+        ],
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
