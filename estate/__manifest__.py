@@ -7,7 +7,8 @@
     'description': """Real Estate Property System""",
     'sequence': -101,
     'depends' : [
-        'base'
+        'base',
+        'mail'
     ],
     'data' : [        
         'views/estate_property_tag_views.xml',

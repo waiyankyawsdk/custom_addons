@@ -6,18 +6,19 @@ from odoo import api, fields, models
 class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real Estate Property"
-
+    _inherit = ['mail.thread','mail.activity.mixin']
+    
     _sql_constraints = [
         ('expected_price', 'CHECK(expected_price > 0)',
          'The expected price must be strictly positive.')
     ]
 
-    name = fields.Char(required = True)
+    name = fields.Char(required = True, tracking=True)
     description = fields.Text()
     postcode = fields.Char()
     date_availability = fields.Date(copy = False, default = lambda x: fields.Date.today())
-    expected_price = fields.Float(required = True)
-    selling_price = fields.Float(readonly = True, copy = False)
+    expected_price = fields.Float(required = True, tracking=True)
+    selling_price = fields.Float(readonly = True, copy = False, tracking=True)
     bedroom = fields.Integer(default = 2)
     living_area = fields.Integer()
     facades = fields.Integer()
@@ -27,7 +28,8 @@ class EstateProperty(models.Model):
     garden_orientation = fields.Selection(
         string = 'orientation',
         selection = [('north','North'), ('south','South'), ('east','East'), ('west','West')],
-        help = "Orientation for four directions"
+        help = "Orientation for four directions",
+        tracking=True
     )
     active = fields.Boolean(active = False)
 
