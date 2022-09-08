@@ -1,3 +1,4 @@
+from email.policy import default
 from odoo import api, fields, models
 
 class HospitalPatient(models.Model):
@@ -8,5 +9,5 @@ class HospitalPatient(models.Model):
     name = fields.Char(string='Name', tracking=True)
     age = fields.Integer(string='Age', tracking=True)
     ref = fields.Char(string="Reference")
-    gender = fields.Selection([('male', 'Male'),('female', 'Female')], string='Gender', tracking=True)
+    gender = fields.Selection([('male', 'Male'),('female', 'Female')], string='Gender', tracking=True, default="male")
     active = fields.Boolean(string="Active", default="True")
