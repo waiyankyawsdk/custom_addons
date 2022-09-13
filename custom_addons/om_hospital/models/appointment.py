@@ -12,7 +12,7 @@ class HospitalAppointment(models.Model):
     booking_date = fields.Date(string="Booking Date", default=fields.Date.context_today, tracking=True)
     
     ref = fields.Char(string="Reference")
-
+    prescription = fields.Html(string="Prescription")
     @api.onchange('patient_ids')
     def _onchange_patient_id(self):
         self.ref = self.patient_ids.ref

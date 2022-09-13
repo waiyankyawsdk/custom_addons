@@ -34,8 +34,7 @@
                     <!-- Notebook -->
                     <notebook>
                         <page string="Prescription" name="perscription">
-                            <group>
-                            </group>
+                            <field name="prescription" string="Enter your prescription" />
                         </page>
                         <page string="Pharmacy" name="pharmacy">
                             <group>
