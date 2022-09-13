@@ -29,3 +29,7 @@ class HospitalAppointment(models.Model):
     @api.onchange('patient_ids')
     def _onchange_patient_id(self):
         self.ref = self.patient_ids.ref
+    
+    # Action button test
+    def action_test(self):
+        print("Button Clicked!!!!!!!!!!!!!!!!!!!!!")
