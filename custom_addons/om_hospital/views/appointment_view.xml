@@ -8,6 +8,7 @@
             <tree>
                 <field name="patient_ids" />
                 <field name="appointment_time" />
+                <field name="ref" />
                 <field name="booking_date" />
             </tree>
             </field>
@@ -26,6 +27,7 @@
                             <field name="booking_date" />
                         </group>
                         <group>
+                            <field name="ref" />
                             <field name="appointment_time" />
                         </group>
                     </group>
