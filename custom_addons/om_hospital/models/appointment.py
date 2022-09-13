@@ -13,6 +13,13 @@ class HospitalAppointment(models.Model):
     
     ref = fields.Char(string="Reference")
     prescription = fields.Html(string="Prescription")
+    priority = fields.Selection([
+        ('0','Normal'),
+        ('1','Low'),
+        ('2','High'),
+        ('3','Very High')
+    ])
+    
     @api.onchange('patient_ids')
     def _onchange_patient_id(self):
         self.ref = self.patient_ids.ref
