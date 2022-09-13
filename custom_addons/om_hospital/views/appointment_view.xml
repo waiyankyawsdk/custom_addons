@@ -19,7 +19,12 @@
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
             <form>
+                <!-- Status bar -->
+                <header>
+                    <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}" statusbar_visible="draft,in_consultation,done" />
+                </header>
                 <sheet>
+                    <!-- Priortiy Widget or Stars -->
                     <div>
                         <h2>
                             <field name="priority" widget="priority" />
