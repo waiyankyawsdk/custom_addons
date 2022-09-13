@@ -31,6 +31,17 @@
                             <field name="appointment_time" />
                         </group>
                     </group>
+                    <!-- Notebook -->
+                    <notebook>
+                        <page string="Prescription" name="perscription">
+                            <group>
+                            </group>
+                        </page>
+                        <page string="Pharmacy" name="pharmacy">
+                            <group>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
                 <!-- First manifest in depends, import 'mail' -->
                 <div class="oe_chatter">
