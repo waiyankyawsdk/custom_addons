@@ -35,13 +35,13 @@
                             <field name="patient_ids" />
                             <field name="ref" />
                             <field name="gender" />
-                            <field name="booking_date" />
+                            <field name="booking_date" help="Date of Booking"/>
                         </group>
                         <group>
                             <field name="appointment_time" />
                             <!-- Buttons type : object , action -->
-                            <button name="action_test" type="object" string="Object Button"/>
-                            <button name="%(om_hospital.action_hospital_patient)d" type="action" string="Action Button"/>
+                            <button name="action_test" type="object" string="Object Button" confirm="Are you sure to execute Python code?" />
+                            <button name="%(om_hospital.action_hospital_patient)d" type="action" string="Action Button" confirm="Are you to sure to view Patients?" help="Click to view Patients' List"/>
                         </group>
                     </group>
                     <!-- Notebook -->
