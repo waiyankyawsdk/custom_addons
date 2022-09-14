@@ -8,6 +8,9 @@
             <!-- Tree line decoration colors -->
             <tree decoration-success="state == 'done'" decoration-info="state in ('in_consultation','draft')">
                 <field name="patient_ids" />
+                <!-- Optional for dynamic tree view -->
+                <field name="ref" optional="show"/>
+                <field name="gender" optional="hide"/>
                 <field name="appointment_time" />
                 <field name="ref" />
                 <field name="booking_date" />
