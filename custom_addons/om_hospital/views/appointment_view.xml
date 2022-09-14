@@ -40,8 +40,8 @@
                         <group>
                             <field name="appointment_time" />
                             <!-- Buttons type : object , action -->
-                            <button name="action_test" type="object" string="Object Button" confirm="Are you sure to execute Python code?" />
-                            <button name="%(om_hospital.action_hospital_patient)d" type="action" string="Action Button" confirm="Are you to sure to view Patients?" help="Click to view Patients' List"/>
+                            <button name="action_test" type="object" class="oe_highlight" string="Object Button" confirm="Are you sure to execute Python code?" />
+                            <button name="%(om_hospital.action_hospital_patient)d" class="oe_highlight" type="action" string="Action Button" confirm="Are you to sure to view Patients?" help="Click to view Patients' List"/>
                         </group>
                     </group>
                     <!-- Notebook -->
