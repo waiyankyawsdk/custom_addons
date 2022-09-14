@@ -10,6 +10,8 @@
                 <field name="appointment_time" />
                 <field name="ref" />
                 <field name="booking_date" />
+                <!-- State badge decoration success,info,danger,muted,warning -->
+                <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state in ('in_consultation','draft')" decoration-muted="state == 'cancel'" />
             </tree>
             </field>
         </record>
