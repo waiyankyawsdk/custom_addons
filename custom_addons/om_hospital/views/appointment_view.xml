@@ -10,6 +10,7 @@
                 <field name="patient_ids" />
                 <!-- Optional for dynamic tree view -->
                 <field name="ref" optional="show"/>
+                <field name="doctor_id" widget="many2one_avatar_user"/>
                 <field name="gender" optional="hide"/>
                 <field name="appointment_time" />
                 <field name="ref" />
@@ -42,6 +43,7 @@
                         <group>
                             <field name="patient_ids" />
                             <field name="ref" />
+                            <field name="doctor_id" widget="many2one_avatar_user"/>
                             <field name="gender" />
                             <field name="booking_date" help="Date of Booking"/>
                         </group>
@@ -55,7 +57,7 @@
                     <!-- Notebook -->
                     <notebook>
                         <page string="Prescription" name="perscription">
-                            <field name="prescription" string="Enter your prescription" />
+                            <field name="prescription" string="Enter your prescription" options="{'collaborative': true}"/>
                         </page>
                         <page string="Pharmacy" name="pharmacy">
                             <group>
