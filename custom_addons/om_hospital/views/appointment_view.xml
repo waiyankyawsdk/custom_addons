@@ -6,7 +6,7 @@
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
             <!-- Tree line decoration colors -->
-            <tree decoration-success="state == 'done'" decoration-info="state in ('in_consultation','draft')">
+            <tree decoration-success="state == 'done'" decoration-info="state in ('in_consultation','draft')" sample="1">
                 <field name="patient_ids" />
                 <!-- Optional for dynamic tree view -->
                 <field name="ref" optional="show"/>
