@@ -30,7 +30,12 @@
             <form>
                 <!-- Status bar -->
                 <header>
-                    <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}" statusbar_visible="draft,in_consultation,done" />
+                    <button name="action_in_consultation" string="In Consultation" class="oe_highlight" type="object" states="draft" />
+                    <button name="action_done" string="Mark As Done" type="object" class="oe_highlight" states="in_consultation" />
+                    <button name="action_cancel" string="Cancel" type="object" states="draft,in_consultation" />
+                    <button name="action_draft" string="Reset to Draft" type="object" states="cancel" />
+                    <!-- options="{'clickable': '1'}" -->
+                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,in_consultation,done" />
                 </header>
                 <sheet>
                     <!-- Priortiy Widget or Stars -->

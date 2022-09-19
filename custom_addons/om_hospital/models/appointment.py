@@ -40,3 +40,19 @@ class HospitalAppointment(models.Model):
                 'message' : 'Click Successfully',
                 'type'    : 'rainbow_man'
         }}
+        
+    def action_in_consultation(self):
+        for record in self:
+            record.state = 'in_consultation'
+            
+    def action_done(self):
+        for record in self:
+            record.state = 'done'
+    
+    def action_cancel(self):
+        for record in self:
+            record.state = 'cancel'
+    
+    def action_draft(self):
+        for record in self:
+            record.state = 'draft'
