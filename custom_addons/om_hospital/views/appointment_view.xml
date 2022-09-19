@@ -57,7 +57,7 @@
                     <!-- Notebook -->
                     <notebook>
                         <page string="Prescription" name="perscription">
-                            <field name="prescription" string="Enter your prescription" options="{'collaborative': true}"/>
+                            <field name="prescription" string="Enter your prescription" options="{'collaborative': true , 'resizable': true}"/>
                         </page>
                         <page string="Pharmacy" name="pharmacy">
                             <group>
