@@ -11,7 +11,7 @@
     'author': "Wai Yan Kyaw",
     'sequence': -100,
     'depends': [
-        'mail'
+        'mail','product'
         ],
     'data': [
         'security/ir.model.access.csv',

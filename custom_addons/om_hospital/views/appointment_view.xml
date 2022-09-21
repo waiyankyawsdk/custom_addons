@@ -30,12 +30,12 @@
             <form>
                 <!-- Status bar -->
                 <header>
-                    <button name="action_in_consultation" string="In Consultation" class="oe_highlight" type="object" states="draft" />
-                    <button name="action_done" string="Mark As Done" type="object" class="oe_highlight" states="in_consultation" />
-                    <button name="action_cancel" string="Cancel" type="object" states="draft,in_consultation" />
-                    <button name="action_draft" string="Reset to Draft" type="object" states="cancel" />
+                    <button name="action_in_consultation" string="In Consultation" class="oe_highlight" type="object" states="draft" data-hotkey="i"/>
+                    <button name="action_done" string="Mark As Done" type="object" class="oe_highlight" states="in_consultation" data-hotkey="d"/>
+                    <button name="action_cancel" string="Cancel" type="object" states="draft,in_consultation" data-hotkey="c"/>
+                    <button name="action_draft" string="Reset to Draft" type="object" states="cancel" data-hotkey="u"/>
                     <!-- options="{'clickable': '1'}" -->
-                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,in_consultation,done" />
+                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,in_consultation,done"  options="{'clickable': '1'}"/>
                 </header>
                 <sheet>
                     <!-- Priortiy Widget or Stars -->
@@ -65,8 +65,20 @@
                             <field name="prescription" string="Enter your prescription" options="{'collaborative': true , 'resizable': true}"/>
                         </page>
                         <page string="Pharmacy" name="pharmacy">
-                            <group>
-                            </group>
+                            <!-- One2many field  -->
+                            <field name="pharmacy_line_ids">
+                                <!-- <tree editable="top"> -->
+                                <tree editable="top">
+                                    <field name="product_id" />
+                                    <field name="price_unit" />
+                                    <field name="qty" />
+                                </tree>
+                                <form>
+                                    <field name="product_id" />
+                                    <field name="price_unit" />
+                                    <field name="qty" />
+                                </form>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
