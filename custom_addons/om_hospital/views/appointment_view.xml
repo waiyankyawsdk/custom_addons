@@ -50,6 +50,7 @@
                             <field name="ref" />
                             <field name="doctor_id" widget="many2one_avatar_user"/>
                             <field name="gender" />
+                            <field name="hide_sale_price" groups="base.group_no_one"/>
                             <field name="booking_date" help="Date of Booking" default_focus="1"/>
                         </group>
                         <group>
@@ -70,12 +71,12 @@
                                 <!-- <tree editable="top"> -->
                                 <tree editable="top">
                                     <field name="product_id" />
-                                    <field name="price_unit" />
+                                    <field name="price_unit" attrs="{'column_invisible': [('parent.hide_sale_price', '!=', False)]}" />
                                     <field name="qty" />
                                 </tree>
                                 <form>
                                     <field name="product_id" />
-                                    <field name="price_unit" />
+                                    <field name="price_unit" attrs="{'column_invisible': [('parent.hide_sale_price', '!=', False)]}" />
                                     <field name="qty" />
                                 </form>
                             </field>
