@@ -11,6 +11,7 @@
                 <field name="age" />
                 <field name="ref" />
                 <field name="gender" />
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 <field name="appointment_ids" />
             </tree>
             </field>
@@ -33,6 +34,7 @@
                         <group>
                             <field name="ref" />
                             <field name="gender" />
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             <!-- Archive -->
                             <field name="active" invisible="1"/>
                         </group>
