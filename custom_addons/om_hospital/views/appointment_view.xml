@@ -52,6 +52,7 @@
                 <header>
                     <button name="action_in_consultation" string="In Consultation" class="oe_highlight" type="object" states="draft" data-hotkey="i"/>
                     <button name="action_done" string="Mark As Done" type="object" class="oe_highlight" states="in_consultation" data-hotkey="d"/>
+                    <!-- <button name="%(om_hospital.action_cancel_appointment)d" string="Cancel" type="action" states="draft,in_consultation" data-hotkey="c"/> -->
                     <button name="action_cancel" string="Cancel" type="object" states="draft,in_consultation" data-hotkey="c"/>
                     <button name="action_draft" string="Reset to Draft" type="object" states="cancel" data-hotkey="u"/>
                     <!-- options="{'clickable': '1'}" -->
