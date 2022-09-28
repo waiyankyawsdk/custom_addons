@@ -138,6 +138,6 @@
         <menuitem id="menu_appointment"
         name="Appointment"
         action="action_hospital_appointment"
-        parent="menu_patient_master"
-        sequence="0"/>
+        parent="menu_appointment_master"
+        sequence="10"/>
 </odoo>
