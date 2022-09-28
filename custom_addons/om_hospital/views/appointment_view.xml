@@ -11,7 +11,7 @@
                     <field name="ref"/>
                     <templates>
                         <div t-name="activity-box">
-                            <img t-att-src="activity_image('hospital_patient', 'image', record.patient_ids.raw_value)" t-att-title="record.patient_ids.value" t-att-alt="record.patient_ids.value" />
+                            <img t-att-src="activity_image('hospital.patient', 'image', record.patient_ids.raw_value)" t-att-title="record.patient_ids.value" t-att-alt="record.patient_ids.value" />
                             <div>
                                 <field name="ref" display="full"/>
                             </div>
