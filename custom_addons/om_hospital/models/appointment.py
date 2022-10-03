@@ -5,7 +5,9 @@ class HospitalAppointment(models.Model):
     _name = "hospital.appointment"
     _inherit = ['mail.thread','mail.activity.mixin']  
     _description = "Hospital Appointment"
-    _rec_name = "ref"
+    _rec_name = "name"
+    
+    name = fields.Char(readonly=True)
     patient_ids = fields.Many2one(string="Patient", comodel_name="hospital.patient", tracking=True)
     gender = fields.Selection(related="patient_ids.gender", readonly=False, tracking=True)
     appointment_time = fields.Datetime(string="Appointment Time", default=fields.Datetime.now, tracking=True)
@@ -32,6 +34,16 @@ class HospitalAppointment(models.Model):
     @api.onchange('patient_ids')
     def _onchange_patient_id(self):
         self.ref = self.patient_ids.ref
+    
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
+        return super().create(vals)
+    
+    def write(self, vals):
+        if not self.name and not vals.get('name'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
+        return super().write(vals)
     
     # Action button test
     def action_test(self):
