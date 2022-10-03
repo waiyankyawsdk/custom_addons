@@ -15,7 +15,7 @@ class HospitalPatient(models.Model):
     appointment_ids = fields.Many2one('hospital.appointment', string="Appointments")    
     image = fields.Image(string="Image")
     tag_ids = fields.Many2many('patient.tag', string="Tags")
-    
+    appointment_count = fields.Integer()
     @api.model
     def create(self, vals):
         vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
