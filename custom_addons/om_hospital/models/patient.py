@@ -34,3 +34,6 @@ class HospitalPatient(models.Model):
                 record.age = today.year - record.date_of_birth.year
             else:
                 record.age = 1
+    
+    def name_get(self):
+        return [(record.id, "[%s] %s" % (record.ref, record.name)) for record in self]
