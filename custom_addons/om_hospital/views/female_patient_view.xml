@@ -7,7 +7,7 @@
             <field name="res_model">hospital.patient</field>
             <field name="view_mode">tree,form</field>
             <!-- Get default value with context { "default_fieldname" : value} -->
-            <field name="context">{"default_gender" : 'female', 'default_age' : 25}</field>
+            <field name="context">{"default_gender" : 'female', 'default_age' : 25, 'hide_gender': 1}</field>
             <!-- Apply domain as in view -->
             <field name="domain">[('gender', '=', 'female')]</field>
             <field name="help" type="html">
