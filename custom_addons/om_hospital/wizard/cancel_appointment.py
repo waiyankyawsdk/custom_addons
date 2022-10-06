@@ -6,7 +6,7 @@ class CancelAppointmentWizard(models.TransientModel):
     _name = "cancel.appointment.wizard"
     _description = "Cancel Appointment Wizard"
 
-    appointment_id = fields.Many2one(comodel_name="hospital.appointment",string="Appointment")
+    appointment_id = fields.Many2one(comodel_name="hospital.appointment",string="Appointment", domain=[('state', '=', 'draft'),('priority', 'in', ('0', '1', False))])
     reason = fields.Text()
     date_cancel = fields.Date(string="Cancellation Date")
 
