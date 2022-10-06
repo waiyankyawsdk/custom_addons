@@ -1,5 +1,6 @@
 from datetime import date
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
@@ -21,6 +22,11 @@ class HospitalPatient(models.Model):
     martial_status = fields.Selection([('single','Single'),('married','Married')], string="Martial Status", tracking=True)
     partner_name = fields.Char()
     
+    @api.constrains('date_of_birth')
+    def _check_date_of_birth(self):
+        for record in self:
+            if record.date_of_birth and record.date_of_birth > fields.Date.today():
+                raise ValidationError(_('The entered date cannot be greater than Today!'))
     @api.model
     def create(self, vals):
         vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
