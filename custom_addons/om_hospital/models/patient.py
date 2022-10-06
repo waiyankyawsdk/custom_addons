@@ -12,10 +12,15 @@ class HospitalPatient(models.Model):
     ref = fields.Char(string="Reference")
     gender = fields.Selection([('male', 'Male'),('female', 'Female')], string='Gender', tracking=True, default="male")
     active = fields.Boolean(string="Active", default="True")
-    appointment_ids = fields.Many2one('hospital.appointment', string="Appointments")    
+    appointment_id = fields.Many2one('hospital.appointment', string="Appointments")    
     image = fields.Image(string="Image")
     tag_ids = fields.Many2many('patient.tag', string="Tags")
     appointment_count = fields.Integer()
+    appointment_ids = fields.One2many('hospital.appointment', 'patient_id', string="Appointments")
+    parent = fields.Char()
+    martial_status = fields.Selection([('single','Single'),('married','Married')], string="Martial Status", tracking=True)
+    partner_name = fields.Char()
+    
     @api.model
     def create(self, vals):
         vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')

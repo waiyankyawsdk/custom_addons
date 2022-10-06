@@ -8,8 +8,8 @@ class HospitalAppointment(models.Model):
     _rec_name = "name"
     
     name = fields.Char(readonly=True)
-    patient_ids = fields.Many2one(string="Patient", comodel_name="hospital.patient", tracking=True)
-    gender = fields.Selection(related="patient_ids.gender", readonly=False, tracking=True)
+    patient_id = fields.Many2one(string="Patient", comodel_name="hospital.patient", tracking=True)
+    gender = fields.Selection(related="patient_id.gender", readonly=False, tracking=True)
     appointment_time = fields.Datetime(string="Appointment Time", default=fields.Datetime.now, tracking=True)
     booking_date = fields.Date(string="Booking Date", default=fields.Date.context_today, tracking=True)
     

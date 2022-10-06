@@ -12,7 +12,7 @@
                 <field name="ref" />
                 <field name="gender" />
                 <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                <field name="appointment_ids" />
+                <field name="appointment_id" />
             </tree>
             </field>
         </record>
@@ -29,7 +29,7 @@
                             <field name="name" />
                             <field name="date_of_birth" />
                             <field name="age" />
-                            <field name="appointment_ids" />
+                            <field name="appointment_id" />
                         </group>
                         <group>
                             <field name="ref" />
@@ -37,6 +37,14 @@
                             <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             <!-- Archive -->
                             <field name="active" invisible="1"/>
+                            <field name="appointment_count" />
+                        </group>
+                        <group string="Other Information" name="other_info">
+                            <group>
+                                <field name="parent" attrs="{'invisible':['|',('age','>',18),('gender','=','male')]}"/>
+                                <field name="martial_status" />
+                                <field name="partner_name" />
+                            </group>
                         </group>
                     </group>
                 </sheet>
