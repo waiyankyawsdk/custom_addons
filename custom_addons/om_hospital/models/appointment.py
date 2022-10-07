@@ -1,5 +1,6 @@
 from email.policy import default
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 class HospitalAppointment(models.Model):
     _name = "hospital.appointment"
@@ -44,6 +45,11 @@ class HospitalAppointment(models.Model):
         if not self.name and not vals.get('name'):
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
         return super().write(vals)
+    
+    def unlink(self):
+        if self.state != "draft":
+            raise ValidationError(_("You can delete only draft state appointments!!"))
+        return super().unlink()
     
     # Action button test
     def action_test(self):
