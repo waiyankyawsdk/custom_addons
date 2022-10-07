@@ -16,6 +16,7 @@ class PatientTag(models.Model):
         ('sequece_check', 'CHECK(sequence >0)', 'Sequence must be positive and not zero!'),
     ]
     
+    @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
         if default is None:
             default = {}
