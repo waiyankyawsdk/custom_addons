@@ -16,7 +16,7 @@ class HospitalPatient(models.Model):
     appointment_id = fields.Many2one('hospital.appointment', string="Appointments")    
     image = fields.Image(string="Image")
     tag_ids = fields.Many2many('patient.tag', string="Tags")
-    appointment_count = fields.Integer()
+    appointment_count = fields.Integer(compute="_compute_appointment_count", store=True)
     appointment_ids = fields.One2many('hospital.appointment', 'patient_id', string="Appointments")
     parent = fields.Char()
     martial_status = fields.Selection([('single','Single'),('married','Married')], string="Martial Status", tracking=True)
@@ -27,6 +27,12 @@ class HospitalPatient(models.Model):
         for record in self:
             if record.date_of_birth and record.date_of_birth > fields.Date.today():
                 raise ValidationError(_('The entered date cannot be greater than Today!'))
+            
+    @api.depends('appointment_ids')
+    def _compute_appointment_count(self):
+        for rec in self:
+            rec.appointment_count = self.env['hospital.appointment'].search_count([('patient_id','=',rec.id)])
+            
     @api.model
     def create(self, vals):
         vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
