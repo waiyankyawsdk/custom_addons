@@ -33,6 +33,12 @@ class HospitalPatient(models.Model):
         for rec in self:
             rec.appointment_count = self.env['hospital.appointment'].search_count([('patient_id','=',rec.id)])
             
+    @api.ondelete(at_uninstall=False)
+    def _check_appointment(self):
+        for rec in self:
+            if rec.appointment_ids:
+                raise ValidationError(_("You can't delete a patient with appointments!"))
+                
     @api.model
     def create(self, vals):
         vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
