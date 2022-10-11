@@ -27,14 +27,17 @@
             <field name="arch" type="xml">
             <!-- Tree line decoration colors -->
             <tree decoration-success="state == 'done'" decoration-info="state in ('in_consultation','draft')" sample="1" multi_edit="1">
+                <header>
+                    <button name="action_in_consultation" string="In Consultation" type="object" />
+                </header>
+                <field name="name" readonly="1"/>
                 <field name="patient_id" />
                 <!-- Optional for dynamic tree view -->
-                <field name="name" />
                 <field name="ref" optional="show"/>
                 <field name="doctor_id" widget="many2one_avatar_user"/>
                 <field name="gender" optional="hide"/>
                 <field name="appointment_time" />
-                <field name="booking_date" />
+                <field name="booking_date" optional="show"/>
                 <!-- Activity List -->
                 <field name="activity_ids" widget="list_activity" />
                 <!-- State badge decoration success,info,danger,muted,warning -->
