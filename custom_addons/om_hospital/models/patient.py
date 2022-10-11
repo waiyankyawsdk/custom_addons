@@ -13,7 +13,7 @@ class HospitalPatient(models.Model):
     ref = fields.Char(string="Reference")
     gender = fields.Selection([('male', 'Male'),('female', 'Female')], string='Gender', tracking=True, default="male")
     active = fields.Boolean(string="Active", default="True")
-    appointment_id = fields.Many2one('hospital.appointment', string="Appointments")    
+    appointment_id = fields.Many2one('hospital.appointment', string="Appointment")    
     image = fields.Image(string="Image")
     tag_ids = fields.Many2many('patient.tag', string="Tags")
     appointment_count = fields.Integer(compute="_compute_appointment_count", store=True)

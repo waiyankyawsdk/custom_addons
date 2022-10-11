@@ -31,7 +31,7 @@
                     <button name="action_in_consultation" string="In Consultation" type="object" />
                 </header>
                 <field name="name" readonly="1"/>
-                <field name="patient_id" />
+                <field name="patient_id" widget="many2one_avatar"/>
                 <!-- Optional for dynamic tree view -->
                 <field name="ref" optional="show"/>
                 <field name="doctor_id" widget="many2one_avatar_user"/>
@@ -42,8 +42,12 @@
                 <field name="activity_ids" widget="list_activity" />
                 <!-- State badge decoration success,info,danger,muted,warning -->
                 <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state in ('in_consultation','draft')" decoration-muted="state == 'cancel'" />
-                <button name="action_done" type="object" class="fa fa-check btn-success" attrs="{'invisible': [('state', '!=', 'in_consultation')]}"/>
-                <button name="%(om_hospital.action_cancel_appointment)d" type="action" context="{'default_appointment_id' : active_id,'hide_appointment': 1}" class="fa fa-times btn-danger" attrs="{'invisible': [('state', 'not in', ('draft','in_consultation'))]}"/>
+                <button name="action_done" type="object" title="Click To Done" class="fa fa-check btn-success" attrs="{'invisible': [('state', '!=', 'in_consultation')]}"/>
+                <button name="%(om_hospital.action_cancel_appointment)d" title="Click to Cancel" type="action" context="{'default_appointment_id' : active_id,'hide_appointment': 1}" class="fa fa-times btn-danger" attrs="{'invisible': [('state', 'not in', ('draft','in_consultation'))]}"/>
+                <!-- Group by buttons: type = 'edit' -->
+                <groupby name="patient_id">
+                    <button name="edit" string="Edit" type="edit" class="oe_highlight" />
+                </groupby>
             </tree>
             </field>
         </record>
