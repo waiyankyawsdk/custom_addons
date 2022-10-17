@@ -32,9 +32,9 @@ class HospitalAppointment(models.Model):
     pharmacy_line_ids = fields.One2many("appointment.pharmacy.lines", "appointment_id" , string="Pharmacy Lines")
     hide_sale_price = fields.Boolean()
     
-    @api.onchange('patient_ids')
+    @api.onchange('patient_id')
     def _onchange_patient_id(self):
-        self.ref = self.patient_ids.ref
+        self.ref = self.patient_id.ref
     
     @api.model
     def create(self, vals):
