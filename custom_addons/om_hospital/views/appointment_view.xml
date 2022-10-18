@@ -86,6 +86,7 @@
                             <field name="gender" />
                             <field name="hide_sale_price" groups="base.group_no_one"/>
                             <field name="booking_date" help="Date of Booking" default_focus="1"/>
+                            <field name="operation_id" />
                         </group>
                         <group>
                             <field name="appointment_time" />
