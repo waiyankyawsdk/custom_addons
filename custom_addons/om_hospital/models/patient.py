@@ -21,6 +21,7 @@ class HospitalPatient(models.Model):
     parent = fields.Char()
     martial_status = fields.Selection([('single','Single'),('married','Married')], string="Martial Status", tracking=True)
     partner_name = fields.Char()
+    is_birthday = fields.Boolean(string="Birthday?", compute="_compute_is_birthday")
     
     @api.constrains('date_of_birth')
     def _check_date_of_birth(self):
@@ -72,3 +73,13 @@ class HospitalPatient(models.Model):
     
     def name_get(self):
         return [(record.id, "[%s] %s" % (record.ref, record.name)) for record in self]
+    
+    @api.depends('date_of_birth')
+    def _compute_is_birthday(self):
+        for rec in self:
+            is_birthday = False
+            if rec.date_of_birth:
+                today = date.today()
+                if today.day == rec.date_of_birth.day and today.month == rec.date_of_birth.month:
+                    is_birthday = True
+            rec.is_birthday = is_birthday
