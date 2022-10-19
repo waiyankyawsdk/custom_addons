@@ -21,6 +21,7 @@
                         <group>
                             <field name="doctor_id" />
                             <field name="operation_name" />
+                            <field name="reference_record" />
                         </group>
                     </group>
                 </sheet>
