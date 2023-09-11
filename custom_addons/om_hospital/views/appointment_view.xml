@@ -133,6 +133,12 @@
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
                 <search>
+                    <group expand="0" string="State">
+                        <filter name="filter_state_draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                        <filter name="filter_state_consulting" string="In Consulting" domain="[('state', '=', 'in_consulting')]"/>
+                        <filter name="filter_state_done" string="Done" domain="[('state', '=', 'done')]"/>
+                        <filter name="filter_state_cancel" string="Canceled" domain="[('state', '=', 'cancel')]"/>
+                    </group>
                 </search>
             </field>
         </record>

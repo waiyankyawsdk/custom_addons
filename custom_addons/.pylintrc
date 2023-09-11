@@ -1,0 +1,26 @@
+[MESSAGES CONTROL]
+
+# disable the "missing-docstring" warning
+disable=missing-docstring
+
+# enable the "unused-variable" warning
+enable=unused-variable
+
+# specify a custom error severity for the "dangerous-default-value" warning
+dangerous-default-value=error
+
+[BASIC]
+
+# specify the maximum line length
+max-line-length=120
+
+# specify the minimum number of public methods for a class
+min-public-methods=1
+
+[FORMAT]
+
+# specify the maximum number of characters allowed on a single line
+max-line-length=120
+
+# specify the maximum number of lines in a module
+max-module-lines=1000
