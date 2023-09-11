@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="web_date_month_year assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/web_date_month_year/static/src/js/web_datepicker.js"></script>
+            <script type="text/javascript" src="/web_date_month_year/static/src/js/list_renderer.js"></script>
+            <script type="text/javascript" src="/web_date_month_year/static/src/js/web_time.js"></script>
+            <script type="text/javascript" src="/web_date_month_year/static/src/js/field_utils.js"></script>
+
+            <!-- user new file tempusdominus to apply fix of issue https: //github.com/tempusdominus/bootstrap-4/issues/133 -->
+            <script type="text/javascript" src="/web_date_month_year/static/src/js/tempusdominus_fixed.js"></script>
+        </xpath>
+    </template>
+</odoo>
