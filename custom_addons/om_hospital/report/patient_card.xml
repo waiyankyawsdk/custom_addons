@@ -15,7 +15,7 @@
                                                     <p style="text-align:center; padding-top:10px;">
                                                         <img t-if="not o.image" t-attr-src="'/web/static/src/img/placeholder.png'" 
                                                         height="140" border="1" width="120" />
-                                                        <img t-if="o.image" t-attr-src="'data:image/png;base64,%s' % to_text(o.image)"
+                                                        <img t-if="o.image" t-attr-src="'data:image/png;base64,%s' % to_text(o.image,)"
                                                         height="140" border="1" width="120"/>
                                                     </p>
                                                 </td>
