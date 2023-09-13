@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>  
+<odoo>
+    <record id="view_hospital_appointment_graph" model="ir.ui.view">
+    <field name="name">hospital.appointment.graph</field>
+    <field name="model">hospital.appointment</field>
+    <field name="arch" type="xml">
+        <graph string="Appointments">
+            <field name="patient_id"/>
+            <field name="doctor_id"/>
+            <field name="booking_date"/>
+        </graph>
+    </field>
+    </record>
+
+    <record id="view_hospital_appointment_pivot" model="ir.ui.view"> 
+        <field name="name">hospital.appointment.pivot</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <pivot string="Pivot View">
+                <field name="name" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="mobile_service_view_calendar" model="ir.ui.view">
+    <field name="name">hospital.appointment.calendar</field>
+    <field name="model">hospital.appointment</field>
+    <field name="arch" type="xml">
+        <calendar string="Appointments"
+                    date_start="booking_date"
+                    event_open_popup="true"
+                    mode="month"
+                    color="patient_id"
+                    quick_add="False">
+            <field name="patient_id"/>
+            <field name="doctor_id"/>
+            <field name="booking_date"/>
+        </calendar>
+    </field>
+    </record>
  <!-- Activity View -->
         <record id="view_hospital_appointment_activity" model="ir.ui.view">
             <field name="name">hospital.appointment.activity</field>
@@ -147,7 +185,7 @@
             <field name="name">Appointments</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">hospital.appointment</field>
-            <field name="view_mode">tree,form,activity</field>
+            <field name="view_mode">tree,form,activity,calendar,pivot,graph</field>
             <field name="context">{}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
@@ -161,4 +199,5 @@
         action="action_hospital_appointment"
         parent="menu_appointment_master"
         sequence="10"/>
+        <menuitem name="Customer Report" id="menu_report_customer"  parent="menu_appointment_master" action="action_hospital_appointment" sequence="5"/>
 </odoo>
