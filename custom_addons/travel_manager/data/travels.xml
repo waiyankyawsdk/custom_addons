@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="work_data" model="travel.travel">
+            <field name="name">Package2</field>
+            <field name="destination">Bagan</field>
+        </record>
+    </data>
+</odoo>

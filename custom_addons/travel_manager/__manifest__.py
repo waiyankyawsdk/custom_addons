@@ -7,7 +7,9 @@
     """,
     'data' :[
         'security/ir.model.access.csv',
-        'views/travel_view.xml'
+        'views/travel_view.xml',
+        'data/travels.xml',
+        'report/travel_report.xml'
     ],
     'demo':[
 
