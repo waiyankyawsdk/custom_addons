@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import date
 from dateutil import relativedelta
+from lxml import etree
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 
@@ -30,6 +31,18 @@ class HospitalPatient(models.Model):
     phone = fields.Char()
     email = fields.Char()
     website = fields.Char()
+
+    def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+        result = super(HospitalPatient, self).fields_view_get(view_id, view_type, toolbar=toolbar, submenu=submenu)
+        if view_type in ['form', 'tree']:
+            doc = etree.XML(result['arch'])
+            # Modify the view structure as needed
+            dob = doc.xpath("//field[@name='date_of_birth']")
+            if dob:
+                dob[0].set('string', 'Birth Date Changed')
+            result['arch'] = etree.tostring(doc, encoding='unicode')
+        return result
+
 
     @api.constrains('date_of_birth')
     def _check_date_of_birth(self):
