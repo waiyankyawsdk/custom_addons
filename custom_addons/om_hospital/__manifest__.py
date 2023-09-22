@@ -27,7 +27,8 @@
         'views/patient_tag_view.xml',
         'views/operation_view.xml',
         'views/res_config_settings_views.xml',
-        'views/hospital_dashboard.xml',
+        # 'views/hospital_dashboard.xml',
+        'views/survey_form_view.xml',
         'report/patient_card.xml',
         'report/report.xml'
     ],
