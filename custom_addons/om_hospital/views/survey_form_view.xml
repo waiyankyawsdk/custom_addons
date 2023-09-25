@@ -14,6 +14,68 @@
             </field>
         </record>
 
+        <template id="create_repair" name="Repair Order">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure">
+                        <div class="container">
+                            <t t-if="submitted">
+                                <h3 class="alert alert-success mt16 mb16">
+                                    <i class="fa fa-thumbs-up"/>
+                                    Repair Form submitted successfully
+                                </h3>
+                                <a href="/repair_form">Submit another survey</a>
+                            </t>
+                            <t t-else="">
+                                <form role="form" action="/create/webrepair" method="POST">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="form-group">
+                                            <label for="product_id" class="control-label"> Product </label>
+                                            <select name="product_id" class="form-control link-style">
+                                                <t t-foreach="product_rec" t-as="product">
+                                                    <option t-esc="product.name" t-att-value="product.id"/>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    <div class="form-group">
+                                        <label for="product_qty" class="control-label"> Quantity </label>
+                                        <input type="number" name="product_qty" t-att-value="product_qty" id="product_qty" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="product_uom" class="control-label"> UOM </label>
+                                        <select name="product_uom" class="form-control link-style">
+                                            <t t-foreach="uom" t-as="uom">
+                                                <option t-esc="uom.name" t-att-value="uom.id"/>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="partner_id" class="control-label"> Customer </label>
+                                            <select name="partner_id" class="form-control link-style">
+                                                <t t-foreach="customer_id" t-as="customer">
+                                                    <option t-esc="customer.name" t-att-value="customer.id"/>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="location_id" class="control-label"> Location </label>
+                                            <select name="location_id" class="form-control link-style">
+                                                <t t-foreach="location_id" t-as="location">
+                                                    <option t-esc="location.name" t-att-value="location.id"/>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="clearfix oe_login_buttons">
+                                            <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                                        </div>
+                                </form>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
         <template id="survey_form_template" name="Survey Form">
             <t t-call="website.layout">
                 <div class="container s_website_form">
