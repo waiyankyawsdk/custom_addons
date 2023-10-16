@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+         <record id="action_travel_manager" model="ir.actions.act_window">
+            <field name="name">Travel Manager</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">travel.travel</field>
+            <field name="view_mode">tree,form</field>
+            <!-- Search Default Filter and GroupBy => {'search_default_filter_nanameme' : 1(true)} -->
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first record!
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="travel_manager_menu" name="Travel"/>
+        <menuitem id="travel_records_menu" parent="travel_manager_menu" name="Travel" action="action_travel_manager" sequence="5"/>
+    </data>
+</odoo>

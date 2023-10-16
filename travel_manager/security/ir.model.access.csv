@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_unlink,perm_create
+access_travel_manager,access_travel_manager,model_travel_travel,base.group_user,1,1,1,1

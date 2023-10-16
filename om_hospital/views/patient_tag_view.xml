@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+        <!-- Tree View -->
+        <record id="view_patient_tag_tree" model="ir.ui.view">
+            <field name="name">patient.tag.tree</field>
+            <field name="model">patient.tag</field>
+            <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="name" />
+                <field name="color" widget="color_picker"/>
+                <field name="color_2" widget="color" groups="base.group_no_one"/>
+                <field name="active" />
+            </tree>
+            </field>
+        </record>
+        <!-- Form View -->
+        <record id="view_patient_tag_form" model="ir.ui.view">
+            <field name="name">patient.tag.form</field>
+            <field name="model">patient.tag</field>
+            <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="sequence" />
+                        </group>
+                        <group>
+                            <!-- Active Toggle Widget -->
+                            <field name="color" widget="color_picker" />
+                            <field name="color_2" widget="color" groups="base.group_no_one"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_patient_tag" model="ir.actions.act_window">
+            <field name="name">Patient Tag</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">patient.tag</field>
+            <field name="view_mode">tree,form</field>
+            <!-- Search Default Filter and GroupBy => {'search_default_filter_name' : 1(true)} -->
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first tag!
+                </p>
+            </field>
+        </record>
+        <!-- Menu -->
+        <menuitem id="menu_patient_tag"
+        name="Tags"
+        action="action_patient_tag"
+        parent="menu_configuration"
+        sequence="10"/>
+</odoo>

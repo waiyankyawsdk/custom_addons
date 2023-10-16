@@ -1,0 +1,38 @@
+<odoo>
+     <record id="dashboard_hospital_view" model="ir.ui.view">
+        <field name="name">Hospital Dashboard</field>
+        <field name="model">board.board</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Hospital Dashboard">
+                <board>
+                    <column>
+                        <action string="Patient Tree" name="%(action_hospital_patient)d" />
+                    </column>
+                    <column>
+                        <action string="Appointment Graph" name="%(action_appointment_graph)d" />
+                    </column>
+                </board>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_appointment_graph" model="ir.actions.act_window">
+        <field name="name">Appointment Graph</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_hospital_appointment_graph"/>
+    </record>
+
+    <record id="action_hospital_dashboard" model="ir.actions.act_window">
+        <field name="name">Hospital Dashboard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">board.board</field>
+        <field name="view_mode">form</field>
+        <field name="usage">menu</field>
+        <field name="view_id" ref="dashboard_hospital_view"/>
+    </record>
+
+
+    <menuitem id="menu_hospital_dashboard" parent="menu_hospital_root" action="action_hospital_dashboard"/>
+</odoo>

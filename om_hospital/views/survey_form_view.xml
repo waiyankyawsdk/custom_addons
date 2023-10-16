@@ -1,0 +1,144 @@
+<odoo>
+    <data>
+        <record id="survey_form_tree" model="ir.ui.view">
+            <field name="name">survey.form.view.tree</field>
+            <field name="model">survey.form</field>
+            <field name="arch" type="xml">
+                <tree create="false">
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="dob"/>
+                    <field name="qualification"/>
+                </tree>
+            </field>
+        </record>
+
+        <template id="create_repair" name="Repair Order">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure">
+                        <div class="container">
+                            <t t-if="submitted">
+                                <h3 class="alert alert-success mt16 mb16">
+                                    <i class="fa fa-thumbs-up"/>
+                                    Repair Form submitted successfully
+                                </h3>
+                                <a href="/repair_form">Submit another survey</a>
+                            </t>
+                            <t t-else="">
+                                <form role="form" action="/create/webrepair" method="POST">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="form-group">
+                                            <label for="product_id" class="control-label"> Product </label>
+                                            <select name="product_id" class="form-control link-style">
+                                                <t t-foreach="product_rec" t-as="product">
+                                                    <option t-esc="product.name" t-att-value="product.id"/>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    <div class="form-group">
+                                        <label for="product_qty" class="control-label"> Quantity </label>
+                                        <input type="number" name="product_qty" t-att-value="product_qty" id="product_qty" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="product_uom" class="control-label"> UOM </label>
+                                        <select name="product_uom" class="form-control link-style">
+                                            <t t-foreach="uom" t-as="uom">
+                                                <option t-esc="uom.name" t-att-value="uom.id"/>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="partner_id" class="control-label"> Customer </label>
+                                            <select name="partner_id" class="form-control link-style">
+                                                <t t-foreach="customer_id" t-as="customer">
+                                                    <option t-esc="customer.name" t-att-value="customer.id"/>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="location_id" class="control-label"> Location </label>
+                                            <select name="location_id" class="form-control link-style">
+                                                <t t-foreach="location_id" t-as="location">
+                                                    <option t-esc="location.name" t-att-value="location.id"/>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="clearfix oe_login_buttons">
+                                            <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                                        </div>
+                                </form>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="survey_form_template" name="Survey Form">
+            <t t-call="website.layout">
+                <div class="container s_website_form">
+                    <h3>Survey Form</h3>
+                    <t t-if="submitted">
+                        <h3 class="alert alert-success mt16 mb16">
+                            <i class="fa fa-thumbs-up"/>
+                            Survey submitted successfully
+                        </h3>
+                        <a href="/survey_form">Submit another survey</a>
+                    </t>
+                    <t t-else="">
+                        <div class="row">
+                            <div class="mx-auto col-6">
+                                <form id="form_survey_form"
+                                    action="/survey_form" method="POST">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()"/>
+                                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                                        <div class="form-group col-12">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control"
+                                                name="name" placeholder="Enter your name"
+                                                required="required"/>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control"
+                                                name="email" placeholder="Enter your mail-id"
+                                                required="required"/>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for="phone">Phone</label>
+                                            <input type="number" class="form-control"
+                                                name="phone" placeholder="Enter your name"
+                                                required="required"/>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for="dob">DOB</label>
+                                            <input type="date" class="form-control"
+                                                name="dob" placeholder="dd/mm/yyyy"/>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for="qualification">Qualification</label>
+                                            <select class="form-control" name="qualification">
+                                                <option value="">Select</option>
+                                                <option value="pg">Post Graduation</option>
+                                                <option value="ug">Graduation</option>
+                                                <option value="higher_secondary">Higher Secondary</option>
+                                                <option value="secondary">Secondary</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <input type="submit" class="btn btn-primary form-control"
+                                                value="Submit"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
